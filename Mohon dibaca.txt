@@ -1,0 +1,6 @@
+PENTING!!!
+1. Copy folder gmp yang ada pada didalam folder library ke dalam folder "xampp/php"
+2. Buka php.ini dalam folder "xampp/php" dan cari ";extension=php_gmp.dll" lalu hilangkan tanda ";" didepannya menjadi "extension=php_gmp.dll" yang ada pada file "php.ini" 
+3. Restart Apache atau nyalakan ulang control panel
+
+https://github.com/aniskurniawan
