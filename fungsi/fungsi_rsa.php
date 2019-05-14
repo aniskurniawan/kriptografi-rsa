@@ -13,7 +13,12 @@ explode    = Memecah String;
 */  
     // Acak e semua bilangan bilangan yang relatif prima terhadap (p-1), (p+1), (q-1) dan (q+1)
     function e($p,$q){
-            return rand(1,$p-1);
+            $a=rand(2,$p-1);
+            $b=rand(2,$p+1);
+            $c=rand(2,$q+1);
+            $d=rand(2,$q-1);
+            $e=array($a,$b,$c,$d);
+            return $e[array_rand($e)];
     }
     // Proses Enkripsi
     function enkripsi($teks, $n, $e){
@@ -40,10 +45,6 @@ explode    = Memecah String;
         foreach($teks as $nilai){
         //Rumus Deskripsi
         $hasilteks.=chr(gmp_strval(gmp_mod(gmp_pow($nilai,$d),$n)));  
-        //$gm1 = gmp_pow($nilai,gmp_strval($d));
-        //$gm2 = gmp_mod($gm1,$n);
-        //$gm3 = gmp_strval($gm2);
-        //$hasilteks.=chr($gm3); 
         } 
         return $hasilteks;
     }
@@ -95,9 +96,20 @@ explode    = Memecah String;
         $n=$_POST['n'];
         $d=$_POST['d'];
         $teks=$_POST['teks'];
-        $hasildeskripsi = dekripsi($teks, $d, $n);
+        $hasildekripsi = dekripsi($teks, $d, $n);
         $time_end = microtime(true); // Timer stop eksekusi
         // Waktu Eksekusi
         $duration = $time_end - $time_start;
+    }
+    // Jika Button Prima ditekan
+    if(!empty($_POST['prima'])){
+        $n=$_POST['n'];
+        $prima = true;
+        for($i=2; $i<=($n/2); $i++) {
+            if(($n%$i)==0) {
+                $prima = false;
+                break; //untuk menghentikan looping pada program
+            }
+        }
     }
 ?>
